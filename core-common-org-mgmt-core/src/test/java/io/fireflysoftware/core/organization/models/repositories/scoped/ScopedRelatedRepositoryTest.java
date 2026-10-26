@@ -44,7 +44,7 @@ class ScopedRelatedRepositoryTest {
         when(selection.matching(any(Query.class)).all()).thenReturn(Flux.empty());
         when(selection.matching(any(Query.class)).count()).thenReturn(Mono.just(0L));
         clearInvocations(selection);
-        var implementation = Class.forName(getClass().getPackageName() + "." + entityType.getSimpleName() + "ScopedRepositoryImpl");
+        var implementation = Class.forName(getClass().getPackageName() + ".impl." + entityType.getSimpleName() + "ScopedRepositoryImpl");
         var repository = implementation.getConstructor(R2dbcEntityOperations.class).newInstance(operations);
         var parent = UUID.fromString("00000000-0000-0000-0000-000000000001");
         var client = Criteria.where("id").is(UUID.randomUUID()).or("id").is(UUID.randomUUID());

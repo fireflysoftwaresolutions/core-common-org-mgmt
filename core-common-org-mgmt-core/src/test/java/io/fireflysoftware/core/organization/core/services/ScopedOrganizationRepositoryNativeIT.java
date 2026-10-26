@@ -62,7 +62,9 @@ class ScopedOrganizationRepositoryNativeIT {
     @Configuration(proxyBeanMethods = false)
     @Profile("org-scoped-native-fixture")
     @EnableR2dbcRepositories(basePackages = "io.fireflysoftware.core.organization.models.repositories",
-            entityOperationsRef = "r2dbcEntityTemplate")
+            entityOperationsRef = "r2dbcEntityTemplate",
+            excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
+                    pattern = "io\\.fireflysoftware\\.core\\.organization\\.models\\.repositories\\.authority\\..*"))
     @ComponentScan(basePackages = {"io.fireflysoftware.core.organization.core.services.impl",
             "io.fireflysoftware.core.organization.core.mappers"})
     static class OrdinaryConfiguration {
@@ -109,8 +111,8 @@ class ScopedOrganizationRepositoryNativeIT {
         for (Class<?> type : List.of(
                 io.fireflysoftware.core.organization.core.services.impl.WorkingCalendarServiceImpl.class,
                 io.fireflysoftware.core.organization.core.services.impl.CalendarAssignmentServiceImpl.class,
-                io.fireflysoftware.core.organization.models.repositories.scoped.WorkingCalendarScopedRepositoryImpl.class,
-                io.fireflysoftware.core.organization.models.repositories.scoped.CalendarAssignmentScopedRepositoryImpl.class,
+                io.fireflysoftware.core.organization.models.repositories.scoped.impl.WorkingCalendarScopedRepositoryImpl.class,
+                io.fireflysoftware.core.organization.models.repositories.scoped.impl.CalendarAssignmentScopedRepositoryImpl.class,
                 R2dbcEntityTemplate.class, R2dbcTransactionManager.class,
                 org.springframework.data.r2dbc.repository.support.R2dbcRepositoryFactory.class)) {
             try (var original = type.getResourceAsStream("/" + type.getName().replace('.', '/') + ".class")) {

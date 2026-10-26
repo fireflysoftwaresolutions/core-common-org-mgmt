@@ -40,7 +40,10 @@ import static org.mockito.Mockito.*;
 class ScopedRepositoryBindingTest {
     @Configuration(proxyBeanMethods = false)
     @EnableR2dbcRepositories(basePackages = "io.fireflysoftware.core.organization.models.repositories",
-            entityOperationsRef = "r2dbcEntityTemplate")
+            entityOperationsRef = "r2dbcEntityTemplate",
+            excludeFilters = @org.springframework.context.annotation.ComponentScan.Filter(
+                    type = org.springframework.context.annotation.FilterType.REGEX,
+                    pattern = "io\\.fireflysoftware\\.core\\.organization\\.models\\.repositories\\.authority\\..*"))
     static class RepositoryConfiguration { }
 
     @Test void actualRepositoryProxyDiscoversFragmentAndMapsDerivedParentShareLock() {

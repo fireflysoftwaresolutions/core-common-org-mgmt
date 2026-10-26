@@ -18,6 +18,8 @@
 package io.fireflysoftware.core.organization.models.repositories.scoped;
 
 import io.fireflysoftware.core.organization.models.entities.CalendarAssignment;
+import io.fireflysoftware.core.organization.models.repositories.scoped.impl.CalendarAssignmentScopedRepositoryImpl;
+import io.fireflysoftware.core.organization.models.repositories.scoped.impl.WorkingCalendarScopedRepositoryImpl;
 import io.fireflysoftware.core.organization.models.entities.WorkingCalendar;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

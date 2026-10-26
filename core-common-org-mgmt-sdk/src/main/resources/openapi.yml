@@ -1669,6 +1669,336 @@ paths:
           description: Bank not found
         "500":
           description: Internal server error
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals/{proposalId}/withdraw:
+    post:
+      tags:
+      - Bank Enrollment Proposal Commands
+      summary: Withdraw the retained approval with current maker permission.
+      description: Reads require independent current action-read permission. An existing
+        action or missing row never implies no effect.
+      operationId: withdrawBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnrollmentProposalCommand"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals/{proposalId}/submit:
+    post:
+      tags:
+      - Bank Enrollment Proposal Commands
+      summary: Submit the exact retained proposal with current maker permission and
+        fresh configuration observations.
+      description: Reads require independent current action-read permission. An existing
+        action or missing row never implies no effect.
+      operationId: submitBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnrollmentProposalCommand"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals/{proposalId}/reject:
+    post:
+      tags:
+      - Bank Enrollment Proposal Commands
+      summary: Reject the retained submitted proposal with current independent checker
+        permission.
+      description: Reads require independent current action-read permission. An existing
+        action or missing row never implies no effect.
+      operationId: rejectBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnrollmentProposalCommand"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals/{proposalId}/emergency-cancel:
+    post:
+      tags:
+      - Bank Enrollment Proposal Commands
+      summary: Cancel the retained proposal with exact current emergency permission
+        as the actual staff or machine caller.
+      description: Reads require independent current action-read permission. An existing
+        action or missing row never implies no effect.
+      operationId: emergencyCancelBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnrollmentProposalCommand"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals/{proposalId}/cancel:
+    post:
+      tags:
+      - Bank Enrollment Proposal Commands
+      summary: Cancel the retained proposal with current maker permission.
+      description: Reads require independent current action-read permission. An existing
+        action or missing row never implies no effect.
+      operationId: cancelBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnrollmentProposalCommand"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals/{proposalId}/approve:
+    post:
+      tags:
+      - Bank Enrollment Proposal Commands
+      summary: Record a distinct current staff checker decision over the exact revision
+        and fixed expiry.
+      description: Reads require independent current action-read permission. An existing
+        action or missing row never implies no effect.
+      operationId: approveBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: proposalId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnrollmentProposalCommand"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-proposals:
+    post:
+      tags:
+      - Bank Enrollment Proposal Preparation
+      summary: Prepare a DRAFT Bank enrollment proposal.
+      description: Uses current STAFF preparation permission and current configuration
+        observations. Mode TRANSFER requires its separate transfer-preparation permission.
+        Returns the allocated revision and original preparation outcome; retained
+        recovery requires independent current action-read permission.
+      operationId: prepareBankEnrollmentProposal
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BankEnrollmentPreparationRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentPreparedProposal"
+      x-disable-idempotency: true
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-actions/{actionId}/recover-preparation:
+    post:
+      tags:
+      - Bank Enrollment Preparation Recovery
+      summary: Recover the original preparation outcome and allocated revision.
+      description: Requires independently current action-read permission and the same
+        original desired intent. Matches retained recorded time after the original
+        request deadline. Returns immutable historical preparation data; current proposal
+        state is read separately. A missing action is only not found.
+      operationId: recoverBankEnrollmentPreparation
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: actionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BankEnrollmentPreparationRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentPreparedProposal"
+      x-disable-idempotency: true
   /api/v1/holidays/filter:
     post:
       tags:
@@ -2857,6 +3187,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BankDTO"
+  /api/v1/platform/tenants/{tenantId}/banks/{bankId}/enrollment-actions/{actionId}:
+    get:
+      tags:
+      - Bank Enrollment Action History
+      summary: Read retained enrollment action and receipt
+      description: Requires current action-read authority. Returns immutable historical
+        evidence; a missing action does not close execution.
+      operationId: getEnrollmentActionHistory
+      parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: bankId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: actionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Optional retry key for scoped POST, PUT, PATCH, and DELETE response\
+          \ reuse. Safe methods ignore it. Reuse requires configured trusted identity\
+          \ and namespace; changed input returns 409. Business effects require durable\
+          \ application idempotency."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnrollmentActionHistory"
 components:
   schemas:
     BankHolidayDTO:
@@ -3241,6 +3614,152 @@ components:
         updatedBy:
           type: string
           format: uuid
+    EnrollmentProposalCommand:
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          format: int32
+        actionId:
+          type: string
+        operation:
+          type: string
+          enum:
+          - SUBMIT
+          - APPROVE
+          - REJECT
+          - WITHDRAW
+          - CANCEL
+          - CANCEL_EMERGENCY
+        expectedRevision:
+          type: integer
+          format: int64
+        expectedControlVersion:
+          type: integer
+          format: int64
+        expectedBankGeneration:
+          type: integer
+          format: int64
+        expectedTargetDigest:
+          type: string
+        commandNotAfterEpochMillis:
+          type: integer
+          format: int64
+        approvalUntilEpochMillis:
+          type: integer
+          format: int64
+        reason:
+          type: string
+      additionalProperties: false
+    EnrollmentProposalCommandResult:
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          format: int32
+        actionId:
+          type: string
+        tenantId:
+          type: string
+        bankId:
+          type: string
+        proposalId:
+          type: string
+        revision:
+          type: integer
+          format: int64
+        operation:
+          type: string
+        state:
+          type: string
+        controlVersion:
+          type: integer
+          format: int64
+        targetDigest:
+          type: string
+        receiptId:
+          type: string
+        auditId:
+          type: string
+        outboxEventId:
+          type: string
+        recordedAtEpochMillis:
+          type: integer
+          format: int64
+      additionalProperties: false
+    BankEnrollmentPreparationRequest:
+      required:
+      - actionId
+      - allowedUses
+      - bankId
+      - destinationTenantId
+      - evidenceReferences
+      - institutionId
+      - issuerAuthorityId
+      - mode
+      - notAfterEpochMillis
+      - reason
+      - schemaVersion
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          format: int32
+        actionId:
+          type: string
+        mode:
+          type: string
+          enum:
+          - ENROLL
+          - TRANSFER
+        bankId:
+          type: string
+        destinationTenantId:
+          type: string
+        institutionId:
+          type: string
+        issuerAuthorityId:
+          type: string
+        allowedUses:
+          type: array
+          items:
+            type: string
+            enum:
+            - ACCOUNTING_BOOK
+            - CASH_OPERATIONS
+            - PRODUCT_ISSUANCE
+        notAfterEpochMillis:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        evidenceReferences:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    EnrollmentActionRetainedPayload:
+      type: object
+      properties:
+        encoding:
+          type: string
+        originalJson:
+          type: string
+        canonical:
+          type: string
+        digest:
+          type: string
+    EnrollmentPreparedProposal:
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          format: int32
+        outcome:
+          $ref: "#/components/schemas/EnrollmentProposalCommandResult"
+        revision:
+          $ref: "#/components/schemas/EnrollmentActionRetainedPayload"
+      additionalProperties: false
     FilterOptions:
       type: object
       properties:
@@ -3677,3 +4196,53 @@ components:
           format: int32
       description: Represents a paginated response containing a list of items and
         pagination metadata.
+    EnrollmentActionHistory:
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          format: int32
+        tenantId:
+          type: string
+        bankId:
+          type: string
+        actionId:
+          type: string
+        outcome:
+          type: string
+        intendedOperation:
+          type: string
+        intendedRoute:
+          type: string
+        resolutionKind:
+          type: string
+        request:
+          $ref: "#/components/schemas/EnrollmentActionRetainedPayload"
+        resolution:
+          $ref: "#/components/schemas/EnrollmentActionRetainedPayload"
+        receipt:
+          $ref: "#/components/schemas/EnrollmentActionRetainedPayload"
+        approvedRevision:
+          $ref: "#/components/schemas/EnrollmentActionRetainedPayload"
+        resolvedBy:
+          $ref: "#/components/schemas/EnrollmentActionResolver"
+        recordedAtEpochMillis:
+          type: integer
+          format: int64
+    EnrollmentActionResolver:
+      type: object
+      properties:
+        kind:
+          type: string
+        issuer:
+          type: string
+        subject:
+          type: string
+        tenantId:
+          type: string
+        staffRealm:
+          type: string
+        staffActorId:
+          type: string
+        clientId:
+          type: string

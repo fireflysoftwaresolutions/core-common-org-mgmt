@@ -47,6 +47,8 @@ This microservice follows a reactive programming model using Spring WebFlux, ens
 
 [Scoped metadata queries](docs/scoped-metadata-queries.md) describes parent filters, pagination, and transaction locking.
 
+[Bank enrollment proposals](docs/bank-enrollment-proposals.md) describes governed preparation, retained recovery, and deployment prerequisites.
+
 ## Architecture
 The Organization Management Microservice follows a modular architecture with clear separation of concerns:
 

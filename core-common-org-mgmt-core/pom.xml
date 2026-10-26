@@ -27,6 +27,23 @@
             <artifactId>core-common-org-mgmt-models</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.fireflysoftware</groupId>
+            <artifactId>core-common-config-mgmt-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-security-spi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-security-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-security-resource-server</artifactId>
+        </dependency>
+
         <!-- Common Libraries -->
         <dependency>
             <groupId>org.fireflyframework</groupId>
