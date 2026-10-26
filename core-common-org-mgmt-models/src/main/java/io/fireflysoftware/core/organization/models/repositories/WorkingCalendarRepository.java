@@ -18,6 +18,9 @@
 package io.fireflysoftware.core.organization.models.repositories;
 
 import io.fireflysoftware.core.organization.models.entities.WorkingCalendar;
+import io.fireflysoftware.core.organization.models.repositories.scoped.WorkingCalendarScopedRepository;
+import org.springframework.data.relational.repository.Lock;
+import org.springframework.data.relational.core.sql.LockMode;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,8 +30,10 @@ import java.util.UUID;
  * Repository for managing {@link WorkingCalendar} entities.
  */
 @Repository
-public interface WorkingCalendarRepository extends BaseRepository<WorkingCalendar, UUID> {
-    
+public interface WorkingCalendarRepository extends BaseRepository<WorkingCalendar, UUID>, WorkingCalendarScopedRepository {
+    @Lock(LockMode.PESSIMISTIC_READ)
+    Mono<WorkingCalendar> findByIdAndBankId(UUID id, UUID bankId);
+
     /**
      * Find all calendars belonging to a specific bank.
      *

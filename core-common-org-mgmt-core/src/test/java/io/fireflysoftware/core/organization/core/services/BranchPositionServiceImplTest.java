@@ -17,6 +17,7 @@
 
 package io.fireflysoftware.core.organization.core.services;
 
+import io.fireflysoftware.core.organization.core.services.impl.BranchPositionServiceImpl;
 import org.fireflyframework.core.filters.FilterRequest;
 import org.fireflyframework.core.filters.FilterUtils;
 import org.fireflyframework.core.queries.PaginationResponse;

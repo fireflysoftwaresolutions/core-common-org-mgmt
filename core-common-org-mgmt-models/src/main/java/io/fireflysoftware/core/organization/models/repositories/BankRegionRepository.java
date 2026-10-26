@@ -18,6 +18,7 @@
 package io.fireflysoftware.core.organization.models.repositories;
 
 import io.fireflysoftware.core.organization.models.entities.BankRegion;
+import io.fireflysoftware.core.organization.models.repositories.scoped.BankRegionScopedRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,7 +28,7 @@ import java.util.UUID;
  * Repository for managing {@link BankRegion} entities.
  */
 @Repository
-public interface BankRegionRepository extends BaseRepository<BankRegion, UUID> {
+public interface BankRegionRepository extends BaseRepository<BankRegion, UUID>, BankRegionScopedRepository {
     
     /**
      * Find all regions belonging to a specific division.

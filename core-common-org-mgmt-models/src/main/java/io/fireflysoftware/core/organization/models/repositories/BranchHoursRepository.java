@@ -19,6 +19,7 @@ package io.fireflysoftware.core.organization.models.repositories;
 
 import io.fireflysoftware.core.organization.interfaces.enums.DayOfWeek;
 import io.fireflysoftware.core.organization.models.entities.BranchHours;
+import io.fireflysoftware.core.organization.models.repositories.scoped.BranchHoursScopedRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,7 +29,7 @@ import java.util.UUID;
  * Repository for managing {@link BranchHours} entities.
  */
 @Repository
-public interface BranchHoursRepository extends BaseRepository<BranchHours, UUID> {
+public interface BranchHoursRepository extends BaseRepository<BranchHours, UUID>, BranchHoursScopedRepository {
     
     /**
      * Find all hours for a specific branch.

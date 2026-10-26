@@ -1,0 +1,34 @@
+spring:
+  flyway:
+    enabled: false
+
+firefly:
+  security:
+    resource-server:
+      strict-policy: true
+      issuer: ${NATIVE_ENROLLMENT_ISSUER}
+      audiences:
+        - ${NATIVE_ENROLLMENT_AUDIENCE}
+      jwk-set-uri: ${NATIVE_ENROLLMENT_JWKS_URI}
+      signature-algorithms:
+        - RS256
+      tenant-claim-paths:
+        - tenant_id
+      tenant-required: true
+  organization:
+    enrollment:
+      action-read:
+        enabled: true
+      policy:
+        base-uri: ${NATIVE_ENROLLMENT_POLICY_BASE_URI}
+        decision-path: ${NATIVE_ENROLLMENT_POLICY_DECISION_PATH}
+      platform-tenant-id: ${NATIVE_ENROLLMENT_PLATFORM_TENANT}
+      caller-profiles:
+        - issuer: ${NATIVE_ENROLLMENT_ISSUER}
+          tenant-claim: tenant_id
+          kind-claim: ${NATIVE_ENROLLMENT_KIND_CLAIM}
+          staff-actor-claim: ${NATIVE_ENROLLMENT_STAFF_CLAIM}
+          client-claim: ${NATIVE_ENROLLMENT_CLIENT_CLAIM}
+          staff-value: ${NATIVE_ENROLLMENT_STAFF_VALUE}
+          machine-value: ${NATIVE_ENROLLMENT_MACHINE_VALUE}
+          staff-realm: ${NATIVE_ENROLLMENT_STAFF_REALM}

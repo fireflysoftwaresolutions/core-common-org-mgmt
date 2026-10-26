@@ -18,6 +18,9 @@
 package io.fireflysoftware.core.organization.models.repositories;
 
 import io.fireflysoftware.core.organization.models.entities.BranchDepartment;
+import io.fireflysoftware.core.organization.models.repositories.scoped.BranchDepartmentScopedRepository;
+import org.springframework.data.relational.repository.Lock;
+import org.springframework.data.relational.core.sql.LockMode;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,7 +30,10 @@ import java.util.UUID;
  * Repository for managing {@link BranchDepartment} entities.
  */
 @Repository
-public interface BranchDepartmentRepository extends BaseRepository<BranchDepartment, UUID> {
+public interface BranchDepartmentRepository extends BaseRepository<BranchDepartment, UUID>, BranchDepartmentScopedRepository {
+    @Lock(LockMode.PESSIMISTIC_READ)
+    Mono<BranchDepartment> findByIdAndBranchId(UUID id, UUID branchId);
+
     
     /**
      * Find all departments belonging to a specific branch.

@@ -18,6 +18,7 @@
 package io.fireflysoftware.core.organization.models.repositories;
 
 import io.fireflysoftware.core.organization.models.entities.CalendarAssignment;
+import io.fireflysoftware.core.organization.models.repositories.scoped.CalendarAssignmentScopedRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -29,7 +30,7 @@ import java.util.UUID;
  * Repository for managing {@link CalendarAssignment} entities.
  */
 @Repository
-public interface CalendarAssignmentRepository extends BaseRepository<CalendarAssignment, UUID> {
+public interface CalendarAssignmentRepository extends BaseRepository<CalendarAssignment, UUID>, CalendarAssignmentScopedRepository {
     
     /**
      * Find all assignments for a specific calendar.

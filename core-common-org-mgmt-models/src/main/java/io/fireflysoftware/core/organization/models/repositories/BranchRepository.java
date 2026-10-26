@@ -18,6 +18,7 @@
 package io.fireflysoftware.core.organization.models.repositories;
 
 import io.fireflysoftware.core.organization.models.entities.Branch;
+import io.fireflysoftware.core.organization.models.repositories.scoped.BranchScopedRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,7 +28,7 @@ import java.util.UUID;
  * Repository for managing {@link Branch} entities.
  */
 @Repository
-public interface BranchRepository extends BaseRepository<Branch, UUID> {
+public interface BranchRepository extends BaseRepository<Branch, UUID>, BranchScopedRepository {
     
     /**
      * Find all branches belonging to a specific bank.

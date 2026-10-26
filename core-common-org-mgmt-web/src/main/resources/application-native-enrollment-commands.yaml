@@ -1,0 +1,38 @@
+spring:
+  flyway:
+    enabled: false
+  security:
+    oauth2:
+      client:
+        registration:
+          org-bank-enrollment-observer:
+            authorization-grant-type: client_credentials
+            client-id: ${ENROLLMENT_CONFIG_CLIENT_ID}
+            client-secret: ${ENROLLMENT_CONFIG_CLIENT_SECRET}
+            provider: enrollment-configuration
+        provider:
+          enrollment-configuration:
+            token-uri: ${ENROLLMENT_CONFIG_TOKEN_URI}
+
+firefly:
+  organization:
+    enrollment:
+      proposal-commands:
+        enabled: true
+      observers:
+        profiles:
+          - tenant-id: ${ENROLLMENT_CONFIG_TARGET_TENANT}
+            registration-id: org-bank-enrollment-observer
+            issuer: ${ENROLLMENT_CONFIG_ISSUER}
+            client-id: ${ENROLLMENT_CONFIG_CLIENT_ID}
+            subject: ${ENROLLMENT_CONFIG_SUBJECT}
+            audience: ${ENROLLMENT_CONFIG_AUDIENCE}
+            configuration-base-uri: ${ENROLLMENT_CONFIG_BASE_URI}
+            token-endpoint: ${ENROLLMENT_CONFIG_TOKEN_URI}
+            jwk-set-uri: ${ENROLLMENT_CONFIG_JWKS_URI}
+            tenant-claim: ${ENROLLMENT_CONFIG_TENANT_CLAIM}
+            kind-claim: ${ENROLLMENT_CONFIG_KIND_CLAIM}
+            staff-actor-claim: ${ENROLLMENT_CONFIG_STAFF_CLAIM}
+            client-claim: ${ENROLLMENT_CONFIG_CLIENT_CLAIM}
+            staff-value: ${ENROLLMENT_CONFIG_STAFF_VALUE}
+            machine-value: ${ENROLLMENT_CONFIG_MACHINE_VALUE}

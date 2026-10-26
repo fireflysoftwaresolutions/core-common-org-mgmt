@@ -45,6 +45,10 @@ This microservice follows a reactive programming model using Spring WebFlux, ens
 - **Audit Logging**: Track all changes to organizational entities with detailed audit logs
 - **Reactive APIs**: Non-blocking, reactive REST APIs for all operations
 
+[Scoped metadata queries](docs/scoped-metadata-queries.md) describes parent filters, pagination, and transaction locking.
+
+[Bank enrollment proposals](docs/bank-enrollment-proposals.md) describes governed preparation, retained recovery, and deployment prerequisites.
+
 ## Architecture
 The Organization Management Microservice follows a modular architecture with clear separation of concerns:
 
